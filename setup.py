@@ -15,5 +15,6 @@ setup(name='requestbin',
             'Intended Audience :: Developers',
             'Development Status :: 4 - Beta'
     ],
+    url='https://github.com/RedHatQE/requestbin',
     packages = find_packages(),
     )
