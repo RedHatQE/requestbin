@@ -60,4 +60,6 @@ class Bin(object):
         '''return accumulated requests to this bin'''
         path = pathjoin(self.path, self.name, Request.path)
         response = self.service.send(SRequest('GET', path))
-        return Request.from_response(response, bin=self)
+        # a bin behaves as a push-down store --- better to return the requests
+        # in order of appearance
+        return list(reversed(Request.from_response(response, bin=self)))

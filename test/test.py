@@ -26,3 +26,8 @@ def test_01_basic_functionality():
     assert request.content_type == 'application/json', 'invalid content type'
     assert json.loads(request.body) == {u'0': False, u'1': True}, 'invalid body content'
     assert Request.from_response(requests.get(request.api_url), bin=bin).id == request.id, 'invalid request id/api_url'
+
+    # requests order is maintained
+    requests.post(bin.url, data=json.dumps({u'2': False, u'3': True}), headers={'content-type': 'application/json'})
+    request_times = [request.time for request in bin.requests]
+    assert request_times == sorted(request_times), 'order not preserved'
