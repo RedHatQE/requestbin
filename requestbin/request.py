@@ -8,7 +8,7 @@ class Request(object):
     path = 'requests'
 
     def __init__(self, bin=None, body={}, content_length=0, content_type='', form_data={}, headers={},
-        id='', method='', path='/', query_string={}, remote_addr='', time=None):
+        id='', method='', path='/', query_string={}, remote_addr='', time=None, **kwargs):
         self.bin = bin
         self.body = body
         self.content_length = content_length
